@@ -1,13 +1,28 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'DocsGPT-action'
+description: 'Automated Documentation generation on release using OpenAI'
+author: '@Narottam04'
+
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  github_token:
+    description: 'GitHub Token'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  openai_key: 
+    # https://platform.openai.com/account/api-keys
+    description: 'OpenAI API Key'
+    required: true
+  openai_temperature:
+    # https://platform.openai.com/docs/api-reference/chat/create#completions/create-temperature
+    description: 'OpenAI Temperature'
+    required: false
+  openai_top_p:
+    # https://platform.openai.com/docs/api-reference/chat/create#completions/create-top_p
+    description: 'OpenAI Top P'
+    required: false
+  openai_max_tokens:
+  # https://platform.openai.com/docs/api-reference/chat/create#completions/create-max_tokens
+    description: 'OpenAI Max Tokens'
+    required: false
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
